@@ -69,11 +69,20 @@ server.on("error", (err) => {
   throw err;
 });
 
-connectDb(mongoUri)
-  .then(() => console.log(`MongoDB connected (${mongoSource})`))
-  .catch((err) => {
+(async () => {
+  try {
+    await connectDb(mongoUri);
+    console.log(`MongoDB connected (${mongoSource})`);
+  } catch (err) {
+    const msg = err instanceof Error ? err.message : String(err);
     console.error(
       "MongoDB connection failed — check MONGODB_ATLAS_URL / MONGODB_URI and restart.",
     );
-    console.error(err?.message ?? err);
-  });
+    console.error(msg);
+    if (msg.includes("querySrv") && msg.includes("ECONNREFUSED")) {
+      console.error(
+        "Hint: Windows DNS blocked SRV lookup. Use Atlas standard connection string in MONGODB_URI, or set MONGODB_DNS_SERVERS=8.8.8.8,1.1.1.1",
+      );
+    }
+  }
+})();

@@ -111,6 +111,18 @@ VITE_CLOUDINARY_UPLOAD_PRESET=...
 
 ---
 
+## 로컬 오류: `querySrv ECONNREFUSED`
+
+`mongodb+srv://` 연결 시 Windows에서 **Node DNS**가 SRV 조회에 실패할 수 있습니다 (nslookup은 되는데 Node만 실패).
+
+**해결 (택1):**
+
+1. 서버 재시작 — Windows에서는 코드가 `8.8.8.8` / `1.1.1.1` DNS를 자동 사용합니다.
+2. `server/.env`에 `MONGODB_DNS_SERVERS=8.8.8.8,1.1.1.1` 추가
+3. Atlas → Connect → **Standard connection string**을 복사해 `MONGODB_URI`에 넣고 `MONGODB_ATLAS_URL`은 비우기
+
+---
+
 ## 배포 후 확인
 
 1. Railway: `https://<railway>/health` → `"db":"connected"`
