@@ -129,9 +129,10 @@ Vercel·Railway 모두 저장소 연결 방식이므로 `git push`까지 완료�
 
 | 대시보드 항목 | 값 |
 |---------------|-----|
-| Root Directory | `server` |
-| Start Command | `npm run start:prod` |
-| (Build) | 비워 두거나 `npm install` |
+| Root Directory | **`server`** ← 필수 (루트로 두면 Railpack 오류) |
+| Config file path | `/server/railway.json` (자동 인식) |
+| Start Command | `npm run start:prod` (railway.json에도 있음) |
+| (Build) | `npm ci` (railway.json에도 있음) |
 
 **Variables** (`server/.env.example` 참고):
 
