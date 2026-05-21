@@ -3,17 +3,25 @@ import { createApp } from "./app.js";
 import { connectDb } from "./config/db.js";
 
 const port = Number(process.env.PORT) || 5000;
+const host = process.env.HOST ?? "0.0.0.0";
 const mongoUri = process.env.MONGODB_URI;
 
 if (!mongoUri) {
-  console.error("Missing MONGODB_URI. Copy .env.example to .env and set it.");
-  process.exit(1);
+  console.error(
+    "Missing MONGODB_URI — server will start for healthcheck but DB/API will fail. Set MONGODB_URI in Railway Variables.",
+  );
+}
+
+if (!process.env.SESSION_SECRET && !process.env.JWT_SECRET) {
+  console.error(
+    "Missing SESSION_SECRET or JWT_SECRET — set in Railway Variables.",
+  );
 }
 
 const app = createApp();
 const isProd = process.env.NODE_ENV === "production";
-const server = app.listen(port, () => {
-  console.log(`Server listening on http://localhost:${port}`);
+const server = app.listen(port, host, () => {
+  console.log(`Server listening on http://${host}:${port}`);
   if (isProd || process.env.SERVE_CLIENT === "1") {
     console.log(`SPA: same origin (client/dist) when built`);
   }
@@ -61,11 +69,13 @@ server.on("error", (err) => {
   throw err;
 });
 
-connectDb(mongoUri)
-  .then(() => console.log("MongoDB connected"))
-  .catch((err) => {
-    console.error(
-      "MongoDB connection failed — API is still running; fix MongoDB or MONGODB_URI and restart."
-    );
-    console.error(err?.message ?? err);
-  });
+if (mongoUri) {
+  connectDb(mongoUri)
+    .then(() => console.log("MongoDB connected"))
+    .catch((err) => {
+      console.error(
+        "MongoDB connection failed — API is still running; fix MongoDB or MONGODB_URI and restart.",
+      );
+      console.error(err?.message ?? err);
+    });
+}

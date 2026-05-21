@@ -144,6 +144,8 @@ Vercel·Railway 모두 저장소 연결 방식이므로 `git push`까지 완료�
 
 넣지 않을 것: `SERVE_CLIENT`, `CLIENT_DIST` (프론트는 Vercel)
 
+**Healthcheck 실패 시:** Variables에 `MONGODB_URI`, `JWT_SECRET`, `SESSION_SECRET`이 있는지 확인. Root Directory는 `server` 여야 함.
+
 배포 후 **Settings → Networking → Public URL** 복사 → `https://xxx.up.railway.app`
 
 ### 2) Vercel (client)

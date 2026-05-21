@@ -2,9 +2,27 @@ import path from "node:path";
 import cookieParser from "cookie-parser";
 import cors from "cors";
 import express from "express";
+import mongoose from "mongoose";
 import { createSessionMiddleware } from "../config/session.js";
 import { registerRoutes } from "../routes/index.js";
 import { clientDistReady, resolveClientDist } from "../utils/clientDist.js";
+
+const DB_STATE = [
+  "disconnected",
+  "connected",
+  "connecting",
+  "disconnecting",
+];
+
+/** Railway 헬스체크용 — 세션/DB 설정 전에 응답 */
+function mountHealthRoutes(app) {
+  const handler = (_req, res) => {
+    const db = DB_STATE[mongoose.connection.readyState] ?? "unknown";
+    res.status(200).json({ ok: true, db });
+  };
+  app.get("/api/health", handler);
+  app.get("/health", handler);
+}
 
 export function createApp() {
   const app = express();
@@ -12,6 +30,8 @@ export function createApp() {
   if (process.env.TRUST_PROXY === "1") {
     app.set("trust proxy", 1);
   }
+
+  mountHealthRoutes(app);
 
   const origins = process.env.CORS_ORIGINS
     ? process.env.CORS_ORIGINS.split(",").map((s) => s.trim()).filter(Boolean)
@@ -26,7 +46,15 @@ export function createApp() {
   );
   app.use(express.json());
   app.use(cookieParser());
-  app.use(createSessionMiddleware());
+
+  try {
+    app.use(createSessionMiddleware());
+  } catch (err) {
+    console.error(
+      "[session] disabled:",
+      err instanceof Error ? err.message : err,
+    );
+  }
 
   registerRoutes(app);
 
