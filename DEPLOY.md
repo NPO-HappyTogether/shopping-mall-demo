@@ -121,6 +121,8 @@ git commit -m "Initial commit"
 
 CLI 없이 GitHub 연동만으로 배포할 때의 설정입니다.
 
+**Railway Variables·API 전체 목록:** [docs/RAILWAY.md](docs/RAILWAY.md)
+
 ### 사전: GitHub에 코드 push
 
 Vercel·Railway 모두 저장소 연결 방식이므로 `git push`까지 완료해 두세요.
@@ -131,22 +133,24 @@ Vercel·Railway 모두 저장소 연결 방식이므로 `git push`까지 완료�
 |---------------|-----|
 | Root Directory | **`server`** ← 필수 (루트로 두면 Railpack 오류) |
 | Config file path | `/server/railway.json` (자동 인식) |
-| Start Command | `npm run start:prod` (railway.json에도 있음) |
-| (Build) | `npm ci` (railway.json에도 있음) |
+| Start Command | `npm run start:prod` |
+| Build Command | `npm ci` |
+| Healthcheck | `/health` (timeout 300s) |
 
-**Variables** (`server/.env.example` 참고):
+**Variables (필수):** `NODE_ENV=production`, `MONGODB_URI`, `JWT_SECRET`, `SESSION_SECRET`, `TRUST_PROXY=1`
 
-- `NODE_ENV` = `production`
-- `MONGODB_URI`, `JWT_SECRET`, `SESSION_SECRET`
-- `CORS_ORIGINS` = `https://your-app.vercel.app` (Vercel URL 확정 후, 쉼표로 여러 개 가능)
-- `TRUST_PROXY` = `1`
-- `PORTONE_IMP_KEY`, `PORTONE_IMP_SECRET`
+**Variables (Vercel 연동):** `CORS_ORIGINS=https://<vercel-domain>` (쉼표 구분)
 
-넣지 않을 것: `SERVE_CLIENT`, `CLIENT_DIST` (프론트는 Vercel)
+**Variables (결제):** `PORTONE_IMP_KEY`, `PORTONE_IMP_SECRET`
 
-**Healthcheck 실패 시:** Variables에 `MONGODB_URI`, `JWT_SECRET`, `SESSION_SECRET`이 있는지 확인. Root Directory는 `server` 여야 함.
+**넣지 않기:** `SERVE_CLIENT`, `CLIENT_DIST`, `PORT` 고정값
 
-배포 후 **Settings → Networking → Public URL** 복사 → `https://xxx.up.railway.app`
+배포 후 Public URL로 API 확인:
+
+- `GET /health` · `GET /api/health` → `{"ok":true,"db":"connected"}`
+- `GET /api/products/public` → 상품 목록
+
+Public URL → Vercel `VITE_API_URL`에 입력.
 
 ### 2) Vercel (client)
 

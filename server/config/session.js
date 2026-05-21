@@ -14,6 +14,12 @@ export function createSessionMiddleware() {
     throw new Error("MONGODB_URI is required for session store");
   }
 
+  const crossSite = Boolean(process.env.CORS_ORIGINS?.trim());
+  const prod = process.env.NODE_ENV === "production";
+  const sameSite =
+    process.env.SESSION_COOKIE_SAMESITE ??
+    (crossSite && prod ? "none" : "lax");
+
   return session({
     name: "sid",
     secret,
@@ -28,7 +34,7 @@ export function createSessionMiddleware() {
       secure:
         process.env.SESSION_COOKIE_SECURE === "1" ||
         process.env.NODE_ENV === "production",
-      sameSite: process.env.SESSION_COOKIE_SAMESITE ?? "lax",
+      sameSite,
       maxAge: SESSION_MAX_AGE_MS,
       ...(process.env.SESSION_COOKIE_DOMAIN
         ? { domain: process.env.SESSION_COOKIE_DOMAIN }

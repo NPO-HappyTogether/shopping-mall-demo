@@ -29,3 +29,6 @@ npm run start:prod
 `client/dist` 빌드 후 `NODE_ENV=production`으로 서버가 API와 SPA를 함께 제공합니다.
 
 자세한 배포·환경 변수·체크리스트는 [DEPLOY.md](./DEPLOY.md)를 참고하세요.
+
+- **Railway (API):** [docs/RAILWAY.md](./docs/RAILWAY.md)
+- **Vercel (프론트):** `VITE_API_URL` = Railway Public URL
