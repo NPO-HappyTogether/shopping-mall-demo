@@ -35,7 +35,7 @@ cd ../server && npm ci --omit=dev
 # server/.env 예시
 # NODE_ENV=production
 # PORT=5000
-# MONGODB_URI=mongodb+srv://...
+# MONGODB_ATLAS_URL=mongodb+srv://...
 # JWT_SECRET=...
 # SESSION_SECRET=...
 # CORS_ORIGINS=https://your-domain.com
@@ -81,11 +81,15 @@ NODE_ENV=production
 
 ---
 
+## 환경 변수
+
+**변수 위치·이름 전체:** [docs/ENV.md](docs/ENV.md)
+
 ## 환경 변수 체크리스트
 
-### Server (`server/.env`)
+### Server (`server/.env` / Railway)
 
-- [ ] `MONGODB_URI`
+- [ ] `MONGODB_ATLAS_URL` (Atlas) 또는 `MONGODB_URI` (로컬 Mongo)
 - [ ] `JWT_SECRET`, `SESSION_SECRET` (긴 랜덤 문자열)
 - [ ] `PORTONE_IMP_KEY`, `PORTONE_IMP_SECRET` (결제 검증)
 - [ ] `CORS_ORIGINS` (분리 배포 시 필수)
@@ -93,7 +97,7 @@ NODE_ENV=production
 - [ ] `SESSION_COOKIE_SECURE=1` (HTTPS, 필요 시)
 - [ ] `SESSION_COOKIE_DOMAIN` (서브도메인 공유 시, 선택)
 
-### Client (`client/.env` — **빌드 전**)
+### Client (`client/.env` / Vercel — **빌드 전**)
 
 - [ ] `VITE_PORTONE_STORE_ID`, `VITE_PORTONE_CHANNEL_KEY`
 - [ ] `VITE_API_URL` (분리 배포 시만)
@@ -137,7 +141,7 @@ Vercel·Railway 모두 저장소 연결 방식이므로 `git push`까지 완료�
 | Build Command | `npm ci` |
 | Healthcheck | `/health` (timeout 300s) |
 
-**Variables (필수):** `NODE_ENV=production`, `MONGODB_URI`, `JWT_SECRET`, `SESSION_SECRET`, `TRUST_PROXY=1`
+**Variables (필수):** `NODE_ENV=production`, `MONGODB_ATLAS_URL`(또는 `MONGODB_URI`), `JWT_SECRET`, `SESSION_SECRET`, `TRUST_PROXY=1`
 
 **Variables (Vercel 연동):** `CORS_ORIGINS=https://<vercel-domain>` (쉼표 구분)
 

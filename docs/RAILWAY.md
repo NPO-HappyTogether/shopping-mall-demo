@@ -19,12 +19,14 @@ GitHub: `NPO-HappyTogether/shopping-mall-demo` · Root Directory: **`server`**
 
 ## Variables — 필수
 
-Railway → Service → **Variables**에 추가 (.env 파일 업로드 금지).
+Railway → Service → **Variables**에 추가 (.env 파일 업로드 금지).  
+전체 변수 표: [ENV.md](./ENV.md)
 
 | 변수 | 값 예시 | 없을 때 |
 |------|---------|---------|
 | `NODE_ENV` | `production` | prod 동작·Secure 쿠키 |
-| `MONGODB_URI` | `mongodb+srv://USER:PASS@cluster.../shoping-mall?retryWrites=true&w=majority` | DB/세션 실패 |
+| **`MONGODB_ATLAS_URL`** | `mongodb+srv://USER:PASS@cluster0.xxxxx.mongodb.net/` | DB/세션 실패 |
+| `MONGODB_URI` | 로컬만: `mongodb://127.0.0.1:27017/shoping-mall` | Atlas 없을 때만 |
 | `JWT_SECRET` | 32자 이상 랜덤 | 인증 불가 |
 | `SESSION_SECRET` | 32자 이상 랜덤 (또는 JWT와 동일 가능) | 세션 스토어 실패 |
 | `TRUST_PROXY` | `1` | HTTPS 프록시 환경 권장 |
@@ -115,7 +117,7 @@ VITE_API_URL=https://<railway-public-url>
 
 ## Healthcheck 실패 시
 
-1. Variables: `MONGODB_URI`, `JWT_SECRET` 확인
+1. Variables: `MONGODB_ATLAS_URL`(또는 `MONGODB_URI`), `JWT_SECRET` 확인
 2. Root Directory = `server`
 3. Deploy Logs: `Server listening on http://0.0.0.0:...`
 4. MongoDB Atlas → Network Access → `0.0.0.0/0` 허용

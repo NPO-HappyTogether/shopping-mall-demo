@@ -30,5 +30,6 @@ npm run start:prod
 
 자세한 배포·환경 변수·체크리스트는 [DEPLOY.md](./DEPLOY.md)를 참고하세요.
 
-- **Railway (API):** [docs/RAILWAY.md](./docs/RAILWAY.md)
+- **환경 변수 위치·이름:** [docs/ENV.md](./docs/ENV.md)
+- **Railway (API):** [docs/RAILWAY.md](./docs/RAILWAY.md) — `MONGODB_ATLAS_URL`, `JWT_SECRET`, …
 - **Vercel (프론트):** `VITE_API_URL` = Railway Public URL

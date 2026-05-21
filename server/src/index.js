@@ -1,16 +1,16 @@
 import "dotenv/config";
 import { createApp } from "./app.js";
 import { connectDb } from "./config/db.js";
+import { getMongoUri } from "../utils/mongoUri.js";
 
 const port = Number(process.env.PORT) || 5000;
 const host = process.env.HOST ?? "0.0.0.0";
-const mongoUri = process.env.MONGODB_URI;
-
-if (!mongoUri) {
-  console.error(
-    "Missing MONGODB_URI — server will start for healthcheck but DB/API will fail. Set MONGODB_URI in Railway Variables.",
-  );
-}
+const mongoUri = getMongoUri();
+const mongoSource = process.env.MONGODB_ATLAS_URL?.trim()
+  ? "Atlas (MONGODB_ATLAS_URL)"
+  : process.env.MONGODB_URI?.trim()
+    ? "MONGODB_URI"
+    : "local default";
 
 if (!process.env.SESSION_SECRET && !process.env.JWT_SECRET) {
   console.error(
@@ -69,13 +69,11 @@ server.on("error", (err) => {
   throw err;
 });
 
-if (mongoUri) {
-  connectDb(mongoUri)
-    .then(() => console.log("MongoDB connected"))
-    .catch((err) => {
-      console.error(
-        "MongoDB connection failed — API is still running; fix MongoDB or MONGODB_URI and restart.",
-      );
-      console.error(err?.message ?? err);
-    });
-}
+connectDb(mongoUri)
+  .then(() => console.log(`MongoDB connected (${mongoSource})`))
+  .catch((err) => {
+    console.error(
+      "MongoDB connection failed — check MONGODB_ATLAS_URL / MONGODB_URI and restart.",
+    );
+    console.error(err?.message ?? err);
+  });
