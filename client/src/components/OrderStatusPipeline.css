@@ -1,0 +1,80 @@
+.order-status-pipeline {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.35rem 0.5rem;
+  margin: 1rem 0;
+  padding: 0;
+  list-style: none;
+}
+
+.order-status-pipeline__step {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  padding: 0.35rem 0.6rem;
+  font-size: 0.75rem;
+  color: #9ca3af;
+  background: #f9fafb;
+  border: 1px solid #e5e7eb;
+  border-radius: 999px;
+}
+
+.order-status-pipeline__dot {
+  width: 0.5rem;
+  height: 0.5rem;
+  border-radius: 50%;
+  background: #d1d5db;
+}
+
+.order-status-pipeline__step--done {
+  color: #374151;
+  background: #f3f4f6;
+  border-color: #d1d5db;
+}
+
+.order-status-pipeline__step--done .order-status-pipeline__dot {
+  background: #6b7280;
+}
+
+.order-status-pipeline__step--current {
+  font-weight: 600;
+  color: #111;
+  background: #eff6ff;
+  border-color: #3b82f6;
+  box-shadow: 0 0 0 2px rgb(59 130 246 / 20%);
+}
+
+.order-status-pipeline__step--current .order-status-pipeline__dot {
+  background: #2563eb;
+}
+
+.order-status-pipeline__step--pending.order-status-pipeline__step--current {
+  background: #f3f4f6;
+  border-color: #9ca3af;
+}
+
+.order-status-pipeline__step--paid.order-status-pipeline__step--current {
+  background: #ecfdf5;
+  border-color: #10b981;
+}
+
+.order-status-pipeline__step--preparing.order-status-pipeline__step--current {
+  background: #ecfeff;
+  border-color: #22d3ee;
+}
+
+.order-status-pipeline__step--shipped.order-status-pipeline__step--current {
+  background: #fffbeb;
+  border-color: #f59e0b;
+}
+
+.order-status-pipeline__step--delivered.order-status-pipeline__step--current {
+  background: #f5f3ff;
+  border-color: #8b5cf6;
+}
+
+.order-status-pipeline__step--cancelled.order-status-pipeline__step--current,
+.order-status-pipeline__step--refunded.order-status-pipeline__step--current {
+  background: #fef2f2;
+  border-color: #ef4444;
+}

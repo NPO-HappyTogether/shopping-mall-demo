@@ -1,0 +1,366 @@
+.pdp {
+  min-height: 100vh;
+  background: #fff;
+  color: #111;
+  font-family: Inter, system-ui, sans-serif;
+}
+
+.pdp-status {
+  margin: 0;
+  padding: 3rem 1.5rem;
+  text-align: center;
+  color: #525252;
+  font-size: 0.9375rem;
+}
+
+.pdp-status--error {
+  color: #991b1b;
+}
+
+.pdp-back-link {
+  display: block;
+  width: fit-content;
+  margin: 0 auto 2rem;
+  color: var(--color-burgundy);
+  font-size: 0.875rem;
+  text-decoration: none;
+}
+
+.pdp-back-link:hover {
+  text-decoration: underline;
+}
+
+.pdp-top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 1.25rem 1.5rem 0.5rem;
+}
+
+.pdp-breadcrumb {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.35rem;
+  font-size: 0.75rem;
+  color: #9ca3af;
+}
+
+.pdp-breadcrumb a {
+  color: #9ca3af;
+  text-decoration: none;
+}
+
+.pdp-breadcrumb a:hover {
+  color: var(--color-burgundy);
+}
+
+.pdp-breadcrumb [aria-current='page'] {
+  color: #6b7280;
+}
+
+.pdp-nav-links {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 0.75rem;
+  white-space: nowrap;
+}
+
+.pdp-nav-links__item {
+  color: #6b7280;
+  text-decoration: none;
+}
+
+.pdp-nav-links__item:hover {
+  color: var(--color-burgundy);
+}
+
+.pdp-nav-links__item--disabled {
+  color: #d1d5db;
+  cursor: default;
+}
+
+.pdp-nav-links__sep {
+  color: #e5e7eb;
+}
+
+.pdp-layout {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 3rem 4rem;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 1.5rem 1.5rem 4rem;
+}
+
+.pdp-gallery__main {
+  aspect-ratio: 4 / 5;
+  overflow: hidden;
+  background: #f9fafb;
+}
+
+.pdp-gallery__main img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.pdp-gallery__thumbs {
+  display: flex;
+  gap: 0.5rem;
+  margin-top: 0.75rem;
+}
+
+.pdp-gallery__thumb {
+  flex: 1;
+  aspect-ratio: 1;
+  padding: 0;
+  border: 2px solid transparent;
+  background: #f3f4f6;
+  cursor: pointer;
+  overflow: hidden;
+}
+
+.pdp-gallery__thumb img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.pdp-gallery__thumb--active {
+  border-color: var(--color-burgundy);
+}
+
+.pdp-gallery__summary {
+  margin: 1.25rem 0 0;
+  font-size: 0.8125rem;
+  line-height: 1.65;
+  color: #6b7280;
+  white-space: pre-line;
+}
+
+.pdp-info__name {
+  margin: 0 0 0.35rem;
+  font-family: 'Playfair Display', Georgia, serif;
+  font-size: clamp(1.75rem, 4vw, 2.25rem);
+  font-weight: 500;
+  letter-spacing: 0.02em;
+}
+
+.pdp-info__sku {
+  margin: 0 0 0.75rem;
+  font-size: 0.75rem;
+  color: #9ca3af;
+}
+
+.pdp-info__price {
+  margin: 0 0 1.75rem;
+  font-size: 1.125rem;
+  font-weight: 500;
+  color: #111;
+}
+
+.pdp-field {
+  margin-bottom: 1.25rem;
+}
+
+.pdp-field__label {
+  display: block;
+  margin-bottom: 0.45rem;
+  font-size: 0.8125rem;
+  font-weight: 500;
+  color: #374151;
+}
+
+.pdp-field__select {
+  width: 100%;
+  padding: 0.65rem 0.75rem;
+  font-size: 0.875rem;
+  border: 1px solid #e5e7eb;
+  border-radius: 2px;
+  background: #fff;
+  color: #111;
+  appearance: none;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12'%3E%3Cpath fill='%236b7280' d='M3 4.5L6 7.5L9 4.5'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 0.75rem center;
+}
+
+.pdp-field__select:focus {
+  outline: none;
+  border-color: var(--color-burgundy-focus);
+}
+
+.pdp-colors {
+  display: flex;
+  gap: 0.65rem;
+}
+
+.pdp-colors__swatch {
+  width: 2rem;
+  height: 2rem;
+  padding: 0;
+  border: 2px solid transparent;
+  border-radius: 50%;
+  cursor: pointer;
+  box-shadow: inset 0 0 0 1px rgba(0, 0, 0, 0.08);
+}
+
+.pdp-colors__swatch--active {
+  outline: 2px solid var(--color-burgundy);
+  outline-offset: 2px;
+}
+
+.pdp-field__qty {
+  width: 4.5rem;
+  padding: 0.55rem 0.65rem;
+  font-size: 0.875rem;
+  border: 1px solid #e5e7eb;
+  border-radius: 2px;
+}
+
+.pdp-field__qty:focus {
+  outline: none;
+  border-color: var(--color-burgundy-focus);
+}
+
+.pdp-cart-message {
+  margin: 0 0 0.75rem;
+  font-size: 0.8125rem;
+  color: #166534;
+}
+
+.pdp-cart-message--error {
+  color: #991b1b;
+}
+
+.pdp-cart-message a {
+  color: var(--color-burgundy);
+  font-weight: 500;
+}
+
+.pdp-actions {
+  display: flex;
+  gap: 0.5rem;
+  margin-bottom: 0.5rem;
+}
+
+.pdp-btn--primary:disabled {
+  opacity: 0.65;
+  cursor: not-allowed;
+}
+
+.pdp-btn {
+  font-family: inherit;
+  font-size: 0.8125rem;
+  font-weight: 500;
+  letter-spacing: 0.04em;
+  cursor: pointer;
+  border: none;
+  transition:
+    background 0.15s,
+    color 0.15s,
+    border-color 0.15s;
+}
+
+.pdp-btn--primary {
+  flex: 1;
+  padding: 0.9rem 1rem;
+  color: #fff;
+  background: var(--color-burgundy);
+}
+
+.pdp-btn--primary:hover {
+  background: var(--color-burgundy-hover);
+}
+
+.pdp-btn--wish {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 3rem;
+  flex-shrink: 0;
+  padding: 0;
+  color: #6b7280;
+  background: #fff;
+  border: 1px solid #e5e7eb;
+}
+
+.pdp-btn--wish:hover,
+.pdp-btn--wish--active {
+  color: var(--color-burgundy);
+  border-color: var(--color-burgundy);
+  background: var(--color-burgundy-light);
+}
+
+.pdp-btn--secondary {
+  width: 100%;
+  padding: 0.9rem 1rem;
+  margin-bottom: 2rem;
+  color: var(--color-burgundy);
+  background: #fff;
+  border: 1px solid var(--color-burgundy);
+}
+
+.pdp-btn--secondary:hover {
+  background: var(--color-burgundy-light);
+}
+
+.pdp-accordions {
+  border-top: 1px solid #e5e7eb;
+}
+
+.pdp-accordion {
+  border-bottom: 1px solid #e5e7eb;
+}
+
+.pdp-accordion__trigger {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  padding: 1rem 0;
+  font-family: inherit;
+  font-size: 0.8125rem;
+  font-weight: 500;
+  color: #111;
+  text-align: left;
+  background: none;
+  border: none;
+  cursor: pointer;
+}
+
+.pdp-accordion__icon {
+  font-size: 1.125rem;
+  font-weight: 300;
+  color: #9ca3af;
+  line-height: 1;
+}
+
+.pdp-accordion__panel {
+  padding: 0 0 1rem;
+  font-size: 0.8125rem;
+  line-height: 1.7;
+  color: #6b7280;
+  white-space: pre-line;
+}
+
+.pdp-accordion__panel p {
+  margin: 0;
+}
+
+@media (max-width: 900px) {
+  .pdp-layout {
+    grid-template-columns: 1fr;
+    gap: 2rem;
+  }
+
+  .pdp-top {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+}

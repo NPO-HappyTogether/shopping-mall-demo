@@ -1,0 +1,231 @@
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;700&display=swap');
+
+.navbar {
+  position: sticky;
+  top: 0;
+  z-index: 50;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  padding: 0.85rem 1.5rem;
+  background: #fff;
+  border-bottom: 1px solid #f0f0f0;
+}
+
+.navbar__menu {
+  position: relative;
+  z-index: 2;
+  flex-shrink: 0;
+  margin-left: -0.35rem;
+}
+
+.navbar__icon-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.35rem;
+  color: #111;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+}
+
+.navbar__logo {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  z-index: 1;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  max-width: min(18rem, calc(100% - 7rem));
+  color: #111;
+  text-decoration: none;
+  transform: translate(-50%, -50%);
+  pointer-events: auto;
+}
+
+.navbar__logo-img {
+  flex-shrink: 0;
+  width: 2.25rem;
+  height: 2.25rem;
+  object-fit: contain;
+}
+
+.navbar__logo-text {
+  font-family: 'Playfair Display', Georgia, serif;
+  font-size: clamp(0.85rem, 2.5vw, 1.125rem);
+  font-weight: 700;
+  letter-spacing: 0.02em;
+  line-height: 1.2;
+  white-space: nowrap;
+}
+
+.navbar__actions {
+  position: relative;
+  z-index: 2;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 0.65rem;
+  flex-shrink: 0;
+  margin-left: auto;
+}
+
+.navbar__loading {
+  font-size: 0.875rem;
+  color: #9ca3af;
+}
+
+.navbar__login {
+  padding: 0.4rem 0.9rem;
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: #111;
+  text-decoration: none;
+  border: 1px solid #e5e7eb;
+  border-radius: 999px;
+  transition: background 0.15s ease;
+}
+
+.navbar__login:hover {
+  background: #f9fafb;
+}
+
+.navbar__admin {
+  padding: 0.4rem 0.75rem;
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: #fff;
+  text-decoration: none;
+  background: #111;
+  border-radius: 6px;
+  transition: background 0.15s ease;
+}
+
+.navbar__admin:hover {
+  background: #333;
+}
+
+.navbar__user {
+  position: relative;
+}
+
+.navbar__welcome {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.25rem;
+  padding: 0.4rem 0.75rem;
+  font-size: 0.8rem;
+  font-weight: 600;
+  font-family: inherit;
+  color: #111;
+  white-space: nowrap;
+  background: #f9fafb;
+  border: 1px solid #e5e7eb;
+  border-radius: 999px;
+  cursor: pointer;
+  transition: border-color 0.15s ease;
+}
+
+.navbar__welcome:hover {
+  border-color: #111;
+}
+
+.navbar__chevron {
+  font-size: 0.65rem;
+  opacity: 0.6;
+}
+
+.navbar__dropdown {
+  position: absolute;
+  top: calc(100% + 0.35rem);
+  right: 0;
+  min-width: 9.5rem;
+  max-height: min(70vh, 24rem);
+  padding: 0.35rem;
+  overflow-y: auto;
+  background: #fff;
+  border: 1px solid #e5e7eb;
+  border-radius: 8px;
+  box-shadow: 0 8px 24px rgb(0 0 0 / 10%);
+}
+
+.navbar__dropdown-divider {
+  height: 1px;
+  margin: 0.3rem 0.35rem;
+  background: #e5e7eb;
+}
+
+.navbar__dropdown-item--admin {
+  font-size: 0.8125rem;
+  color: #374151;
+}
+
+.navbar__dropdown-item {
+  display: block;
+  width: 100%;
+  padding: 0.5rem 0.65rem;
+  font-size: 0.875rem;
+  font-family: inherit;
+  text-align: left;
+  text-decoration: none;
+  color: #111;
+  background: transparent;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  box-sizing: border-box;
+}
+
+.navbar__dropdown-item:hover {
+  background: #f3f4f6;
+}
+
+.navbar__cart {
+  position: relative;
+}
+
+.navbar__cart-badge {
+  position: absolute;
+  top: -2px;
+  right: -2px;
+  min-width: 1rem;
+  height: 1rem;
+  padding: 0 0.2rem;
+  font-size: 0.625rem;
+  font-weight: 700;
+  line-height: 1rem;
+  color: #fff;
+  text-align: center;
+  background: var(--color-burgundy);
+  border-radius: 999px;
+}
+
+@media (max-width: 520px) {
+  .navbar {
+    padding: 0.75rem 1rem;
+  }
+
+  .navbar__menu {
+    margin-left: -0.25rem;
+  }
+
+  .navbar__welcome {
+    max-width: 9rem;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+
+  .navbar__logo-text {
+    font-size: 0.7rem;
+    letter-spacing: 0;
+  }
+
+  .navbar__logo-img {
+    width: 2rem;
+    height: 2rem;
+  }
+}

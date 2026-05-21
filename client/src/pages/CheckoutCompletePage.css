@@ -1,0 +1,49 @@
+.checkout-complete-page {
+  min-height: 100vh;
+  background: #fff;
+  font-family: Inter, system-ui, sans-serif;
+}
+
+.checkout-complete-page__inner {
+  max-width: 480px;
+  margin: 0 auto;
+  padding: 3rem 1.5rem;
+  text-align: center;
+}
+
+.checkout-complete-page__title {
+  margin: 0 0 1rem;
+  font-family: 'Playfair Display', Georgia, serif;
+  font-size: 1.5rem;
+}
+
+.checkout-complete-page__status {
+  margin: 0;
+  color: #525252;
+  font-size: 0.9375rem;
+}
+
+.checkout-complete-page__pipeline {
+  justify-content: center;
+  margin-top: 1.25rem;
+}
+
+.checkout-complete-page__error {
+  margin: 0 0 1.25rem;
+  color: #991b1b;
+  font-size: 0.9375rem;
+}
+
+.checkout-complete-page__link {
+  display: inline-block;
+  padding: 0.75rem 1.25rem;
+  color: #fff;
+  text-decoration: none;
+  background: var(--color-burgundy);
+  border-radius: 8px;
+  font-size: 0.875rem;
+}
+
+.checkout-complete-page__link:hover {
+  background: var(--color-burgundy-hover);
+}

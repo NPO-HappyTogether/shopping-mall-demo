@@ -1,0 +1,25 @@
+# Dependencies & build
+**/node_modules/
+**/dist/
+**/dist-ssr/
+**/.vite/
+**/*.tsbuildinfo
+
+# Environment & secrets
+**/.env
+**/.env.*
+!**/.env.example
+
+# Logs & OS
+**/*.log
+.DS_Store
+Thumbs.db
+
+# IDE / local tooling (배포 불필요)
+.cursor/
+.vscode/
+.idea/
+
+# Test / cache
+**/coverage/
+**/.cache/

@@ -1,0 +1,6 @@
+{
+  "watch": ["src", "routes", "controllers", "models", "services", "config", "middleware", "utils"],
+  "ext": "js,cjs,mjs,json",
+  "ignore": ["node_modules/**", "**/*.test.js"],
+  "exec": "node scripts/start.js"
+}

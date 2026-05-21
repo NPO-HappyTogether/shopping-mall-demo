@@ -1,0 +1,13 @@
+{
+  "name": "shoping-mall-demo",
+  "private": true,
+  "description": "Hapvi Together Mall — client + server",
+  "scripts": {
+    "build:client": "npm run build --prefix client",
+    "build": "npm run build:client",
+    "start:server": "npm run start --prefix server",
+    "start:prod": "npm run build:client && npm run start:prod --prefix server",
+    "dev:client": "npm run dev --prefix client",
+    "dev:server": "npm run dev --prefix server"
+  }
+}

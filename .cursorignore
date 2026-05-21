@@ -1,0 +1,4 @@
+﻿# Secrets — block Agent/Tab/Inline Edit from reading or editing these files.
+**/.env
+**/.env.*
+!**/.env.example
