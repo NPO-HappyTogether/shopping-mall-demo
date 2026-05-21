@@ -1,5 +1,6 @@
 import session from "express-session";
 import MongoStore from "connect-mongo";
+import { configureMongoDns } from "../src/config/db.js";
 import { getMongoUri } from "../utils/mongoUri.js";
 
 const SESSION_MAX_AGE_MS = 7 * 24 * 60 * 60 * 1000;
@@ -7,6 +8,7 @@ const SESSION_MAX_AGE_MS = 7 * 24 * 60 * 60 * 1000;
 export function createSessionMiddleware() {
   const secret = process.env.SESSION_SECRET ?? process.env.JWT_SECRET;
   const mongoUrl = getMongoUri();
+  configureMongoDns(mongoUrl);
 
   if (!secret) {
     throw new Error("SESSION_SECRET or JWT_SECRET is required for sessions");

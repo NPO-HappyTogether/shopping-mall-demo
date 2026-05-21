@@ -6,7 +6,8 @@ import mongoose from "mongoose";
  * while nslookup works. Public DNS fixes Atlas mongodb+srv resolution.
  * @param {string} uri
  */
-function configureDnsForSrv(uri) {
+/** Call before any MongoDB client (session store, mongoose.connect). */
+export function configureMongoDns(uri) {
   if (!uri.includes("mongodb+srv")) return;
 
   const servers = process.env.MONGODB_DNS_SERVERS?.split(",")
@@ -28,7 +29,7 @@ function configureDnsForSrv(uri) {
  * @param {string} uri
  */
 export async function connectDb(uri) {
-  configureDnsForSrv(uri);
+  configureMongoDns(uri);
   mongoose.set("strictQuery", true);
   await mongoose.connect(uri, {
     serverSelectionTimeoutMS: 15000,
