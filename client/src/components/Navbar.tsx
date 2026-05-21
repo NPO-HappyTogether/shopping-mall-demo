@@ -11,6 +11,7 @@ import { useClickOutside } from '@/hooks/useClickOutside'
 import { useCart } from '@/hooks/useCart'
 import { useCurrentUser } from '@/hooks/useCurrentUser'
 import { ADMIN_TOP_MENU } from '@/lib/adminMenu'
+import { BRAND_LOGO_SRC, BRAND_NAME } from '@/lib/brand'
 import './Navbar.css'
 
 function NavbarComponent() {
@@ -45,15 +46,15 @@ function NavbarComponent() {
         <IconMenu />
       </button>
 
-      <Link to="/" className="navbar__logo" aria-label="Hapvi Together Mall 홈">
+      <Link to="/" className="navbar__logo" aria-label={`${BRAND_NAME} 홈`}>
         <img
           className="navbar__logo-img"
-          src="/logo.svg"
+          src={BRAND_LOGO_SRC}
           alt=""
           width={36}
           height={36}
         />
-        <span className="navbar__logo-text">Hapvi Together Mall</span>
+        <span className="navbar__logo-text">{BRAND_NAME}</span>
       </Link>
 
       <div className="navbar__actions">

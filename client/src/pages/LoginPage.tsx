@@ -11,6 +11,7 @@ import {
   type StoredUser,
 } from '@/lib/authStorage'
 import { fetchMe } from '@/lib/fetchMe'
+import { BRAND_LOGO_SRC, BRAND_NAME } from '@/lib/brand'
 import { loginUser } from '@/lib/loginUser'
 import './LoginPage.css'
 
@@ -175,12 +176,12 @@ export function LoginPage() {
         <Link className="login-page__brand" to="/">
           <img
             className="login-page__logo"
-            src="/logo.svg"
-            alt="Havpi Together Mall"
+            src={BRAND_LOGO_SRC}
+            alt={BRAND_NAME}
             width={40}
             height={40}
           />
-          <span className="login-page__brand-name">Havpi Together Mall</span>
+          <span className="login-page__brand-name">{BRAND_NAME}</span>
         </Link>
         <button type="button" className="login-page__menu" aria-label="메뉴">
           <span />
@@ -297,7 +298,7 @@ export function LoginPage() {
           <a href="#terms">이용약관</a>
         </nav>
         <p className="login-page__footer-copy">
-          © Copyright Havpi Together Mall {new Date().getFullYear()}
+          © Copyright {BRAND_NAME} {new Date().getFullYear()}
         </p>
       </footer>
     </div>

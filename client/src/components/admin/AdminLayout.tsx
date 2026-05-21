@@ -1,6 +1,7 @@
 import { Link, NavLink, Outlet } from 'react-router-dom'
 import { useCurrentUser } from '@/hooks/useCurrentUser'
 import { ADMIN_TOP_MENU } from '@/lib/adminMenu'
+import { BRAND_LOGO_SRC, BRAND_NAME } from '@/lib/brand'
 import '@/pages/admin/AdminPage.css'
 
 const SIDE_MENU = [
@@ -21,8 +22,8 @@ export function AdminLayout() {
       <header className="admin-top">
         <div className="admin-top__inner">
           <Link to="/" className="admin-logo">
-            <img src="/logo.svg" alt="" className="admin-logo__img" />
-            <span className="admin-logo__text">Hapvi Together Mall</span>
+            <img src={BRAND_LOGO_SRC} alt="" className="admin-logo__img" />
+            <span className="admin-logo__text">{BRAND_NAME}</span>
           </Link>
 
           <div className="admin-search">
@@ -114,7 +115,7 @@ export function AdminLayout() {
       <footer className="admin-footer">
         <div className="admin-footer__inner">
           <div className="admin-footer__logo">
-            <img src="/logo.svg" alt="" />
+            <img src={BRAND_LOGO_SRC} alt="" />
             <span>Hapvi Together Mall</span>
           </div>
           <div className="admin-footer__info">

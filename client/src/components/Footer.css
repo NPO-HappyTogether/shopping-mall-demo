@@ -12,8 +12,22 @@
 }
 
 .home-footer__logo {
-  display: block;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.65rem;
   margin-bottom: 1rem;
+  color: #fff;
+  text-decoration: none;
+}
+
+.home-footer__logo img {
+  flex-shrink: 0;
+  width: 2.5rem;
+  height: 2.5rem;
+  object-fit: contain;
+}
+
+.home-footer__logo span {
   font-family: 'Playfair Display', Georgia, serif;
   font-size: 1.35rem;
   font-weight: 700;

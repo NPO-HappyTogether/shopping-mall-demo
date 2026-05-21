@@ -105,7 +105,7 @@ NODE_ENV=production
 
 ### 에셋
 
-- [ ] `client/public/logo.svg` — Navbar/Admin/로그인 로고
+- [ ] `client/public/logo.png` — Navbar/Admin/로그인/푸터 로고
 
 ---
 

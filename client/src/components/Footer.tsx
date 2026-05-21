@@ -1,5 +1,7 @@
 import { memo } from 'react'
+import { Link } from 'react-router-dom'
 import { FOOTER_LINKS } from '@/data/homeCatalog'
+import { BRAND_LOGO_SRC, BRAND_NAME } from '@/lib/brand'
 import { PRODUCT_CATEGORIES } from '@/lib/productsApi'
 import './Footer.css'
 
@@ -29,7 +31,10 @@ function FooterComponent() {
     <footer className="home-footer">
       <div className="home-footer__top">
         <div className="home-footer__brand">
-          <span className="home-footer__logo">Hapvi Together Mall</span>
+          <Link to="/" className="home-footer__logo">
+            <img src={BRAND_LOGO_SRC} alt="" width={40} height={40} />
+            <span>{BRAND_NAME}</span>
+          </Link>
           <div className="home-footer__social">
             <a href="#facebook" aria-label="Facebook">
               f
