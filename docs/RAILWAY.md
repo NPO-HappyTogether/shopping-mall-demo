@@ -8,7 +8,7 @@ GitHub: `NPO-HappyTogether/shopping-mall-demo` · Root Directory: **`server`**
 |------|-----|
 | Root Directory | `server` (루트 `/` 이면 Railpack 오류) |
 | Start Command | `npm run start:prod` |
-| Build Command | `npm ci` |
+| Build Command | `npm ci --omit=dev` |
 | Healthcheck Path | `/health` |
 | Healthcheck Timeout | 300 |
 | Public Networking | 켜기 |
