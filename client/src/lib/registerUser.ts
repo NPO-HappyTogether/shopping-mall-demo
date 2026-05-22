@@ -56,10 +56,13 @@ export async function registerUser(
     const details = Array.isArray(data.details)
       ? (data.details as string[])
       : undefined
-    const error =
+    let error =
       typeof data.error === 'string'
         ? data.error
         : `가입에 실패했습니다. (${res.status})`
+    if (res.status === 409 || data.error === 'Duplicate email') {
+      error = '이미 가입된 이메일입니다. 로그인해 주세요.'
+    }
     return { ok: false as const, status: res.status, error, details }
   }
 

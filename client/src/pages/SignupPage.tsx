@@ -153,7 +153,10 @@ export function SignupPage() {
         user_type: 'customer',
       })
       if (result.ok === true) {
-        navigate('/', { replace: true, state: { signedUp: true } })
+        navigate('/login', {
+          replace: true,
+          state: { signedUp: true, email: email.trim() },
+        })
       } else if (result.ok === false) {
         setError(result.details?.join(' ') ?? result.error)
       }

@@ -63,9 +63,18 @@ function IconGoogle() {
 export function LoginPage() {
   const navigate = useNavigate()
   const location = useLocation()
-  const redirectTo =
-    (location.state as { from?: string } | null)?.from ?? '/'
-  const [email, setEmail] = useState('')
+  const signupState = location.state as {
+    from?: string
+    signedUp?: boolean
+    email?: string
+  } | null
+  const redirectTo = signupState?.from ?? '/'
+  const [signupNotice, setSignupNotice] = useState(
+    signupState?.signedUp
+      ? '회원가입이 완료되었습니다. 로그인해 주세요.'
+      : null,
+  )
+  const [email, setEmail] = useState(signupState?.email?.trim() ?? '')
   const [password, setPassword] = useState('')
   const [rememberId, setRememberId] = useState(false)
   const [submitting, setSubmitting] = useState(false)
@@ -196,6 +205,11 @@ export function LoginPage() {
           <h1 className="login-page__title">환영합니다!</h1>
 
           <form onSubmit={handleSubmit} noValidate>
+            {signupNotice !== null && (
+              <p className="login-page__success" role="status">
+                {signupNotice}
+              </p>
+            )}
             {error !== null && (
               <p className="login-page__error" role="alert">
                 {error}
