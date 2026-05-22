@@ -26,7 +26,7 @@ Railway → Service → **Variables**에 추가 (.env 파일 업로드 금지).
 |------|---------|---------|
 | `NODE_ENV` | `production` | prod 동작·Secure 쿠키 |
 | **`MONGODB_ATLAS_URL`** | `mongodb+srv://USER:PASS@cluster0.xxxxx.mongodb.net/` | DB/세션 실패 |
-| `MONGODB_URI` | 로컬만: `mongodb://127.0.0.1:27017/shoping-mall` | Atlas 없을 때만 |
+| `MONGODB_URI` | 로컬만: `mongodb://127.0.0.1:27017/shopping-mall-demo` | Atlas 없을 때만 |
 | `JWT_SECRET` | 32자 이상 랜덤 | 인증 불가 |
 | `SESSION_SECRET` | 32자 이상 랜덤 (또는 JWT와 동일 가능) | 세션 스토어 실패 |
 | `TRUST_PROXY` | `1` | HTTPS 프록시 환경 권장 |

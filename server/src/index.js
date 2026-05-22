@@ -1,4 +1,5 @@
 import "dotenv/config";
+import mongoose from "mongoose";
 import { createApp } from "./app.js";
 import { configureMongoDns, connectDb } from "./config/db.js";
 import { getMongoUri } from "../utils/mongoUri.js";
@@ -73,7 +74,10 @@ server.on("error", (err) => {
 (async () => {
   try {
     await connectDb(mongoUri);
-    console.log(`MongoDB connected (${mongoSource})`);
+    const dbName = mongoose.connection.db?.databaseName;
+    console.log(
+      `MongoDB connected (${mongoSource})${dbName ? ` — database: ${dbName}` : ""}`,
+    );
   } catch (err) {
     const msg = err instanceof Error ? err.message : String(err);
     console.error(

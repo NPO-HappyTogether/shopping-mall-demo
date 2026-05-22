@@ -1,5 +1,5 @@
-const LOCAL_DEFAULT = "mongodb://127.0.0.1:27017/shoping-mall";
-const DEFAULT_DB = "shoping-mall";
+const LOCAL_DEFAULT = "mongodb://127.0.0.1:27017/shopping-mall-demo";
+const DEFAULT_DB = "shopping-mall-demo";
 
 /**
  * MongoDB connection URI resolution order:

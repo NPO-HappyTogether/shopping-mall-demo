@@ -25,17 +25,17 @@
 
 1. **`MONGODB_ATLAS_URL`** — Atlas 사용 시 (권장, Railway·로컬 공통)
 2. **`MONGODB_URI`** — 위가 없을 때만 (로컬 Mongo 등)
-3. 둘 다 없으면 → `mongodb://127.0.0.1:27017/shoping-mall`
+3. 둘 다 없으면 → `mongodb://127.0.0.1:27017/shopping-mall-demo`
 
 ```
 # Railway / 로컬 (Atlas)
 MONGODB_ATLAS_URL=mongodb+srv://USER:PASS@cluster0.xxxxx.mongodb.net/
 
 # 로컬 Mongo만 쓸 때 (Atlas 줄 비우기)
-# MONGODB_URI=mongodb://127.0.0.1:27017/shoping-mall
+# MONGODB_URI=mongodb://127.0.0.1:27017/shopping-mall-demo
 ```
 
-- DB 이름이 URI에 없으면 코드가 **`shoping-mall`** 을 붙입니다.
+- DB 이름이 URI에 없으면 코드가 **`shopping-mall-demo`** 를 붙입니다.
 - **`MONGODB_ATLAS_URL`은 `client/.env`에 넣지 마세요.** 서버만 읽습니다.
 
 ### 필수 (배포)
