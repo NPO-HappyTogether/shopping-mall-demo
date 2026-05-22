@@ -1,4 +1,4 @@
-import { apiUrl } from '@/lib/api'
+import { apiUrl, getNetworkErrorMessage } from '@/lib/api'
 
 export type RegisterUserPayload = {
   email: string
@@ -35,11 +35,20 @@ export async function registerUser(
     user_type: payload.user_type ?? 'customer',
   }
 
-  const res = await fetch(apiUrl('/api/users'), {
-    method: 'POST',
-    headers: { 'Content-Type': 'application/json' },
-    body: JSON.stringify(body),
-  })
+  let res: Response
+  try {
+    res = await fetch(apiUrl('/api/users'), {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(body),
+    })
+  } catch {
+    return {
+      ok: false as const,
+      status: 0,
+      error: getNetworkErrorMessage(),
+    }
+  }
 
   const data = (await res.json().catch(() => ({}))) as Record<string, unknown>
 

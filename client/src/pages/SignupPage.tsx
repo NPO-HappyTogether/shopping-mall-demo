@@ -157,8 +157,6 @@ export function SignupPage() {
       } else if (result.ok === false) {
         setError(result.details?.join(' ') ?? result.error)
       }
-    } catch {
-      setError('네트워크 오류가 발생했습니다. 서버가 켜져 있는지 확인해 주세요.')
     } finally {
       setSubmitting(false)
     }

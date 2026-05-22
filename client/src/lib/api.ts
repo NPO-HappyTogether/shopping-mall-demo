@@ -13,3 +13,12 @@ export function apiUrl(path: string): string {
   const base = getApiBaseUrl()
   return base ? `${base}${p}` : p
 }
+
+/** fetch 실패(네트워크·CORS·서버 다운) 시 안내 문구 */
+export function getNetworkErrorMessage(): string {
+  const base = getApiBaseUrl()
+  if (base) {
+    return `API 서버(${base})에 연결할 수 없습니다. Railway 배포 상태와 VITE_API_URL을 확인해 주세요.`
+  }
+  return 'API 서버에 연결할 수 없습니다. server 폴더에서 npm run dev 를 실행했는지 확인해 주세요.'
+}

@@ -1,4 +1,4 @@
-import { apiUrl } from '@/lib/api'
+import { apiUrl, getNetworkErrorMessage } from '@/lib/api'
 import type { StoredUser } from '@/lib/authStorage'
 
 export type LoginPayload = {
@@ -57,7 +57,7 @@ export async function loginUser(payload: LoginPayload): Promise<LoginResult> {
     return {
       ok: false,
       status: 0,
-      error: '네트워크 오류가 발생했습니다. 서버가 켜져 있는지 확인해 주세요.',
+      error: getNetworkErrorMessage(),
     }
   }
 
