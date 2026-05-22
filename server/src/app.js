@@ -5,6 +5,7 @@ import express from "express";
 import mongoose from "mongoose";
 import { createSessionMiddleware } from "../config/session.js";
 import { registerRoutes } from "../routes/index.js";
+import { createCorsOptions } from "../utils/corsOrigin.js";
 import { clientDistReady, resolveClientDist } from "../utils/clientDist.js";
 
 const DB_STATE = [
@@ -33,17 +34,7 @@ export function createApp() {
 
   mountHealthRoutes(app);
 
-  const origins = process.env.CORS_ORIGINS
-    ? process.env.CORS_ORIGINS.split(",").map((s) => s.trim()).filter(Boolean)
-    : null;
-
-  app.use(
-    cors(
-      origins?.length
-        ? { origin: origins, credentials: true }
-        : { origin: true, credentials: true }
-    )
-  );
+  app.use(cors(createCorsOptions()));
   app.use(express.json());
   app.use(cookieParser());
 

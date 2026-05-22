@@ -51,7 +51,7 @@ MONGODB_ATLAS_URL=mongodb+srv://USER:PASS@cluster0.xxxxx.mongodb.net/
 
 | 변수 | 예시 |
 |------|------|
-| `CORS_ORIGINS` | `https://your-app.vercel.app` |
+| `CORS_ORIGINS` | `https://shopping-mall-demo-seven.vercel.app` (실제 Vercel URL, 끝 `/` 없음). `*.vercel.app` 는 코드에서도 허용 |
 | `PORTONE_IMP_KEY` | PortOne REST API Key |
 | `PORTONE_IMP_SECRET` | PortOne REST Secret |
 
@@ -94,7 +94,7 @@ MONGODB_ATLAS_URL=mongodb+srv://USER:PASS@cluster0.xxxxx.mongodb.net/
 JWT_SECRET=<랜덤>
 SESSION_SECRET=<랜덤>
 TRUST_PROXY=1
-CORS_ORIGINS=https://your-app.vercel.app
+CORS_ORIGINS=https://shopping-mall-demo-seven.vercel.app
 PORTONE_IMP_KEY=<키>
 PORTONE_IMP_SECRET=<시크릿>
 ```
