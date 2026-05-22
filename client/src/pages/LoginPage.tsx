@@ -69,11 +69,9 @@ export function LoginPage() {
     email?: string
   } | null
   const redirectTo = signupState?.from ?? '/'
-  const [signupNotice, setSignupNotice] = useState(
-    signupState?.signedUp
-      ? '회원가입이 완료되었습니다. 로그인해 주세요.'
-      : null,
-  )
+  const signupNotice = signupState?.signedUp
+    ? '회원가입이 완료되었습니다. 로그인해 주세요.'
+    : null
   const [email, setEmail] = useState(signupState?.email?.trim() ?? '')
   const [password, setPassword] = useState('')
   const [rememberId, setRememberId] = useState(false)
